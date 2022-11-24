@@ -1,6 +1,7 @@
 from tkinter import *
 from pytube import YouTube
 import os
+from pathlib import Path
 
 
 def download(url):
@@ -17,8 +18,10 @@ def download(url):
         video = yt.streams.filter(only_audio=True).first()
 
         # save the file in Downloads folder as defult
-        destination = "C:\\Users\\chris\\Downloads"
+        destination = str(Path.home() / "Downloads")
 
+	
+	
 
         # download the file
         out_file = video.download(output_path=destination)
